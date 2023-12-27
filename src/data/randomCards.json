@@ -1,0 +1,20 @@
+{
+    "cards": [
+        {
+            "text": "text of card1",
+            "result": [1,1,1]
+        },
+        {
+            "text": "text of card2",
+            "result": [1,1,2]
+        },
+        {
+            "text": "text of card3",
+            "result": [1,5,1]
+        },
+        {
+            "text": "text of card4",
+            "result": [6,101,-1]
+        }
+    ]
+}

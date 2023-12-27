@@ -1,0 +1,1 @@
+export { WinCard } from "./winCard";

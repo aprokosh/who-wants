@@ -1,0 +1,1 @@
+export { LoseCard } from "./loseCard";
