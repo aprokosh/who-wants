@@ -6,11 +6,12 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 
 interface StagesProps {
     questions: IQuestion[],
-    changeState: (price: number[], result: number[]) => void
+    changeState: (array: number[], type: string) => void
 }
 
 interface IQuestion {
     question: string,
+    imagesource?: string,
     answers: Array<answer>
 }
 
@@ -40,10 +41,11 @@ export function Stages ({questions, changeState} : StagesProps) {
         setResultCard(true);
         setResult(result);
         setResultText(resultText);
-        changeState(price, result);
+        changeState(price, "price");
     };
 
-    function handleClose () {
+    function handleClose (result: number[]) {
+        changeState(result, "result");
         setResultCard(false);
         if (currentQuestion+1<n) setCurrentQuestion(currentQuestion+1)
         else {

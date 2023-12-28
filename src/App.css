@@ -1,3 +1,64 @@
 .App {
   text-align: center;
+  background-color: #f2f5ea;
+  height: 100vh;
+  color: #2c363f;
+  font: 1rem "Courier", sans-serif;
 }
+
+.statesBar {
+  background-color: #bbc7a4;
+  height: 7rem;
+  color: #f2f5ea;
+  font: 2.5rem "Courier", sans-serif;
+}
+
+.stateItem {
+  display: inline-block;
+  margin: 30px 30px 0px 30px;
+}
+
+h1 {
+  font: "Courier", sans-serif;
+}
+
+.main-part {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+button img {
+  transform: scale(0.8);
+}
+
+button.option-button {
+  margin: 15px;
+  font: 1rem "Courier", sans-serif;
+}
+
+.card {
+  position: relative;
+  width: 50rem;
+  border-style: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #d6dbd2;
+  border-radius: 15px;
+  margin-top: 2rem;
+  padding: 5rem;
+  display: inline-block;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.close-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.random-card {
+  background-color: #E78EA3;
+  color: #f2f5ea;
+}
+
+/*# sourceMappingURL=App.css.map */

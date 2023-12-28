@@ -3,6 +3,8 @@ export function WinCard () {
         localStorage.setItem('questionNumber', JSON.stringify(0));
     }
     return (
-        <h1>pobeda</h1>
+        <div className="card">
+            <h1>Вау! Теперь вы настоящая матерь бложья. Уже искали себя на багине?</h1>
+        </div>
     )
 }

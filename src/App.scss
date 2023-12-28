@@ -1,0 +1,71 @@
+$ivory: #f2f5ea;
+$olive: #bbc7a4;
+$light-gray: #d6dbd2;
+$black-ish-color: #2c363f;
+$pink: #E78EA3;
+$font-states: 2.5rem 'Courier', sans-serif;
+$font-headers: 'Courier', sans-serif;
+$font-common: 1rem 'Courier', sans-serif;
+
+.App {
+    text-align: center;
+    background-color: $ivory;
+    height: 100vh;
+    color: $black-ish-color;
+    font: $font-common;
+  }
+  
+  .statesBar {
+    background-color: $olive;
+    height: 7rem;
+    color: $ivory;
+    font: $font-states;
+  }
+  
+  .stateItem {
+    display: inline-block;
+    margin: 30px 30px 0px 30px;
+  }
+
+  h1 {
+    font: $font-headers;
+  }
+
+  .main-part {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+  
+  button img {
+    transform: scale(0.8);
+  }
+  
+  button.option-button {
+    margin: 15px;
+    font: $font-common;
+  }
+  
+  .card {
+    position: relative;
+    width: 50rem;
+    border-style:1px solid rgba(0, 0, 0, 0.05);
+    background-color:$light-gray;
+    border-radius:15px;
+    margin-top: 2rem;
+    padding: 5rem;
+    display: inline-block;
+    max-width: 100%;
+    word-wrap: break-word; 
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  .random-card {
+    background-color: $pink;
+    color: $ivory;
+  }

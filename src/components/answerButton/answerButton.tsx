@@ -15,12 +15,12 @@ export function AnswerButton ({ answer : {text, price, result, resultText}, hand
 
 
     return (
-        <button
+        <button className="option-button"
             onClick={() => handleChoice(price, result, resultText)}>
-            {text}
-            <MoneyIcon/>{price[0]}
-            <FollowersIcon/>{price[1]}
-            <BurnoutIcon/>{price[2]}
+            <div>{text}</div>
+            {(price[0]!==0) && <><MoneyIcon/>{price[0]<0?"+":""}{Math.abs(price[0])}</>}
+            {(price[1]!==0) && <><FollowersIcon/>{price[1]<0?"+":""}{Math.abs(price[1])}</>}
+            {(price[2]!==0) && <><BurnoutIcon/>{price[2]<0?"+":""}{Math.abs(price[2])}</>}
         </button>
     )
 }

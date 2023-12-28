@@ -3,19 +3,19 @@ import { BurnoutIcon, CloseIcon, FollowersIcon, MoneyIcon } from "../images"
 interface ResultProps {
     result: number[],
     resultText: string,
-    handleClose: () => void
+    handleClose: (result: number[]) => void
 }
 
 export function ResultCard ({result, resultText, handleClose}: ResultProps) {
     return (
         <div
-        style={{borderStyle:'1px solid rgba(0, 0, 0, 0.05)', background:'#FAFAF5', borderRadius:'5px'}}
+        className="card"
         >
         <h1>{resultText}</h1>
-        <MoneyIcon/>{result[0]}
-        <FollowersIcon/>{result[1]}
-        <BurnoutIcon/>{result[2]}
-        <a href="#" onClick={handleClose}><CloseIcon/></a>
+        <a className="close-icon" href="#" onClick={() => handleClose(result)}><CloseIcon/></a>
+        {(result[0]!==0) && <><MoneyIcon/>{result[0]}</>}
+        {(result[1]!==0) && <><FollowersIcon/>{result[1]}</>}
+        {(result[2]!==0) && <><BurnoutIcon/>{result[2]}</>}
         </div>
     )
 }

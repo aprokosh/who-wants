@@ -38,10 +38,23 @@ export function CloseIcon () {
     return (
         <img 
             src="closeIcon.svg"
-            width="25px"
-            height="25px"
+            width="50px"
+            height="50px"
             alt="close"
             title="Close"
+        />
+    )
+}
+
+export function SafeIcon () {
+    return (
+        <img 
+            src="parachuteIcon.svg"
+            width="100px"
+            height="100px"
+            alt="saved"
+            title="Saved"
+            style={{marginTop:"15px"}}
         />
     )
 }

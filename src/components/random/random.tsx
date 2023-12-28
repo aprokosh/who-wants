@@ -13,13 +13,13 @@ export function Random ({handleCloseRandomModal}:
 
     return (
         <div
-        style={{borderStyle:'1px solid rgba(0, 0, 0, 0.05)', background:'#FAFAF5', borderRadius:'5px'}}
+        className="card random-card"
         >
         <h1>{text}</h1>
-        <MoneyIcon/>{result[0]}
-        <FollowersIcon/>{result[1]}
-        <BurnoutIcon/>{result[2]}
-        <a href="#" onClick={() => handleCloseRandomModal(result)}><CloseIcon/></a>
+        <a className="close-icon" href="#" onClick={() => handleCloseRandomModal(result)}><CloseIcon/></a>
+        {(result[0]!==0) && <><MoneyIcon/>{result[0]}</>}
+        {(result[1]!==0) && <><FollowersIcon/>{result[1]}</>}
+        {(result[2]!==0) && <><BurnoutIcon/>{result[2]}</>}
         </div>
     )
 }

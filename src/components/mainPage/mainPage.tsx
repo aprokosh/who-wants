@@ -7,6 +7,7 @@ import { LoseCard } from "../loseCard";
 
 interface IQuestion {
     question: string,
+    imagesource?: string,
     answers: Array<answer>
 }
 
@@ -18,8 +19,8 @@ interface answer {
 }
 
 export function MainPage () {
-    const [money, setMoney] = useState(1000);
-    const [followers, setFollowers] = useState(1000);
+    const [money, setMoney] = useState(0);
+    const [followers, setFollowers] = useState(0);
     const [burnout, setBurnout] = useState(0);
     const [safeCardMoney, setSafeCardMoney] = useState(true);
     const [safeCardFollowers, setSafeCardFollowers] = useState(true);
@@ -30,13 +31,20 @@ export function MainPage () {
     const quiz:Array<IQuestion> = data;
     console.log("quiz: ", quiz);
 
-    function changeState (price: Array<number>, result: Array<number>) {
-        setMoney(money+price[0]+result[0]);
-        setFollowers(followers+price[1]+result[1]);
-        setBurnout(burnout+price[2]+result[2]);
+    function changeState (array: Array<number>, type: string) {
+        if (type==="price") {
+            setMoney(money-array[0]);
+            setFollowers(followers-array[1]);
+            setBurnout(burnout-array[2]);
+        }
+        else if (type==="result") {
+            setMoney(money+array[0]);
+            setFollowers(followers+array[1]);
+            setBurnout(burnout+array[2]);
+        }
         if (firstCallForRandomCard) {
             setFirstCallForRandomCard(false);
-            const newInterval = 30000 + Math.random()*10000;
+            const newInterval = 100000 + Math.random()*10000;
             console.log(newInterval);
             const intervalId = setInterval(() => {
             setIsRandomModalShown(true);
@@ -58,7 +66,7 @@ export function MainPage () {
             break;
             case 2: {
                 setSafeCardBurnout(false);
-                setBurnout(0);
+                setBurnout(100);
             }
             break;
         }
@@ -66,9 +74,9 @@ export function MainPage () {
     }
 
     function handleCloseRandomModal(result:number[]) {
-        changeState([0,0,0], result);
+        changeState(result, "result");
         setIsRandomModalShown(false);
-        const newInterval = 30000 + Math.random()*10000;
+        const newInterval = 60000 + Math.random()*10000;
         console.log(newInterval);
         const intervalId = setInterval(() => {
           // Update the state here
@@ -79,16 +87,16 @@ export function MainPage () {
     return (
         <>
         <header className="statesBar">
-        <States money={money} followers={followers} burnout={burnout}/>
+            <States money={money} followers={followers} burnout={burnout}/>
         </header>
-
+        <main className="main-part">
         {isRandomModalShown && (
             <Random handleCloseRandomModal={handleCloseRandomModal}/>
         )}
 
         {!isRandomModalShown && (<>
 
-        {(money)>0 && (followers>0) && (burnout<=100) && (
+        {(money)>=0 && (followers>=0) && (burnout>=0) && (
             <>
             <Stages questions={quiz} changeState={changeState}></Stages>
             </>
@@ -104,10 +112,11 @@ export function MainPage () {
         )}
 
         
-        {(burnout>100) && (
+        {(burnout<0) && (
             <LoseCard reason={2} isSafe={safeCardBurnout} handleSafeCard={handleSafeCard}/>
         )}
         </>)}
+        </main>
         </>
     )
     
