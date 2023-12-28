@@ -76,12 +76,6 @@ export function MainPage () {
     function handleCloseRandomModal(result:number[]) {
         changeState(result, "result");
         setIsRandomModalShown(false);
-        const newInterval = 60000 + Math.random()*10000;
-        console.log(newInterval);
-        const intervalId = setInterval(() => {
-          // Update the state here
-          setIsRandomModalShown(true);
-        }, newInterval);
     }
 
     return (
