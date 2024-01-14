@@ -27,6 +27,7 @@ export function MainPage () {
     const [safeCardBurnout, setSafeCardBurnout] = useState(true);
     const [isRandomModalShown, setIsRandomModalShown] = useState(false);
     const [firstCallForRandomCard, setFirstCallForRandomCard] = useState(true);
+    let intervalForRandomCard:any = null;
 
     const quiz:Array<IQuestion> = data;
     console.log("quiz: ", quiz);
@@ -46,7 +47,7 @@ export function MainPage () {
             setFirstCallForRandomCard(false);
             const newInterval = 100000 + Math.random()*10000;
             console.log(newInterval);
-            const intervalId = setInterval(() => {
+            intervalForRandomCard = setInterval(() => {
             setIsRandomModalShown(true);
         }, newInterval);
     }
@@ -78,6 +79,10 @@ export function MainPage () {
         setIsRandomModalShown(false);
     }
 
+    function finishGame () {
+        clearInterval(intervalForRandomCard); 
+    }
+
     return (
         <>
         <header className="statesBar">
@@ -92,22 +97,22 @@ export function MainPage () {
 
         {(money)>=0 && (followers>=0) && (burnout>=0) && (
             <>
-            <Stages questions={quiz} changeState={changeState}></Stages>
+            <Stages questions={quiz} changeState={changeState} finishGame={finishGame}></Stages>
             </>
         )}
 
         {(money<0) && (
-            <LoseCard reason={0} isSafe={safeCardMoney} handleSafeCard={handleSafeCard}/>
+            <LoseCard reason={0} isSafe={safeCardMoney} handleSafeCard={handleSafeCard} finishGame={finishGame}/>
         )}
 
         
         {(followers<0) && (
-            <LoseCard reason={1} isSafe={safeCardFollowers} handleSafeCard={handleSafeCard}/>
+            <LoseCard reason={1} isSafe={safeCardFollowers} handleSafeCard={handleSafeCard} finishGame={finishGame}/>
         )}
 
         
         {(burnout<0) && (
-            <LoseCard reason={2} isSafe={safeCardBurnout} handleSafeCard={handleSafeCard}/>
+            <LoseCard reason={2} isSafe={safeCardBurnout} handleSafeCard={handleSafeCard} finishGame={finishGame}/>
         )}
         </>)}
         </main>

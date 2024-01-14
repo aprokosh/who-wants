@@ -6,7 +6,8 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 
 interface StagesProps {
     questions: IQuestion[],
-    changeState: (array: number[], type: string) => void
+    changeState: (array: number[], type: string) => void,
+    finishGame: ()=>void
 }
 
 interface IQuestion {
@@ -22,7 +23,7 @@ interface answer {
     result: Array<number>
 }
 
-export function Stages ({questions, changeState} : StagesProps) {
+export function Stages ({questions, changeState, finishGame} : StagesProps) {
     const [currentQuestion, setCurrentQuestion] = useLocalStorage('questionNumber', 0);
     const [resultCard, setResultCard] = useState(false);
     const [result, setResult] = useState([0,0,0]);
@@ -51,6 +52,7 @@ export function Stages ({questions, changeState} : StagesProps) {
         else {
             setCurrentQuestion(0);
             setIsWin(true);
+            finishGame();
         }
     }
     

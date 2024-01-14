@@ -3,12 +3,15 @@ import { SafeIcon } from "../images/images";
 interface LoseCardProps {
     reason: number,
     isSafe: boolean,
-    handleSafeCard: (reason: number) => void
+    handleSafeCard: (reason: number) => void,
+    finishGame: ()=>void
 }
 
-export function LoseCard ({reason, isSafe, handleSafeCard} : LoseCardProps) {
+export function LoseCard ({reason, isSafe, handleSafeCard, finishGame} : LoseCardProps) {
     const reasons = ["закончились деньги", "все отписались", "вы выгорели"];
     const safeActivities = ["продать машину", "создать хайп", "съездить на ретрит"]
+    if(!isSafe) finishGame();
+    
     return (
         <div className="card">
         <h1>{reasons[reason]}</h1>
